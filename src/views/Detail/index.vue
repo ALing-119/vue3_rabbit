@@ -3,8 +3,8 @@ import { getDetail } from '@/apis/detail'
 import { useRoute } from 'vue-router'
 import { ref, onMounted } from 'vue'
 import DetailHot from './components/DetailHot.vue'
-import ImageView from '@/components/ImageView/index.vue'
-import XtxSku from '@/components/XtxSku/index.vue'
+// import ImageView from '@/components/ImageView/index.vue'
+// import XtxSku from '@/components/XtxSku/index.vue'
 
 
 
@@ -21,7 +21,7 @@ onMounted(()=>{
 
 //sku组件事件处理
 const Skuchange=(sku)=>{
-  console.log(sku)
+  // console.log(sku)
 }
 </script>
 

@@ -8,8 +8,10 @@ import router from './router'
 import '@/styles/common.scss'
 
 // import { useIntersectionObserver } from '@vueuse/core'
-
+//引入懒加载指令并注册
 import { lazyLoad } from './directives'
+//引入组件插件并注册
+import { compnentsPlugin } from '@/components'
 
 
 
