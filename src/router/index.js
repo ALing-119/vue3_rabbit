@@ -4,6 +4,8 @@ import LoginView from '@/views/Login/index.vue'
 import CategoryView from '@/views/Category/index.vue'
 import HomeView from '@/views/Home/index.vue'
 import SubCategoryatecoryView from '@/views/SubCatecory/index.vue'
+import DetailView from '@/views/Detail/index.vue'
+
 
 
 const router = createRouter({
@@ -28,6 +30,11 @@ const router = createRouter({
           path: 'category/sub/:id',
           name: 'subCategory',
           component: SubCategoryatecoryView,
+        },
+        {
+          path: 'detail/:id',
+          name: 'detail',
+          component: DetailView,
         },
       ]
     },

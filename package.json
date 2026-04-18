@@ -19,6 +19,8 @@
     "vue-router": "^5.0.4"
   },
   "devDependencies": {
+    "@types/estree": "^1.0.8",
+    "@types/web-bluetooth": "^0.0.21",
     "@vitejs/plugin-vue": "^6.0.5",
     "prettier": "3.8.1",
     "sass": "^1.99.0",
