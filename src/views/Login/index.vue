@@ -31,6 +31,17 @@ const rules = ref({
   ]
 })
 
+//3.获取表单实例
+const formRef = ref(null)
+
+//4.提交表单
+const submitForm = () => {
+  formRef.value.validate((valid) => {
+    formRef.value.submit()
+  })
+}
+
+
 
 </script>
 
@@ -56,7 +67,7 @@ const rules = ref({
         </nav>
         <div class="account-box">
           <div class="form">
-            <el-form :model="form" :rules="rules" label-position="right" label-width="60px"
+            <el-form ref="formRef" :model="form" :rules="rules" label-position="right" label-width="60px"
               status-icon>
               <el-form-item  label="账户" prop="account">
                 <el-input v-model="form.account" />
@@ -69,7 +80,7 @@ const rules = ref({
                   我已同意隐私条款和服务条款
                 </el-checkbox>
               </el-form-item>
-              <el-button size="large" class="subBtn">点击登录</el-button>
+              <el-button size="large" class="subBtn" @click="submitForm">点击登录</el-button>
             </el-form>
           </div>
         </div>
