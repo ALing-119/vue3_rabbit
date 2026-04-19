@@ -19,7 +19,7 @@ const confirm = () =>{
 
         <!-- 登录后显示第一块 非登录显示第二块 是否有token -->
         <template v-if="userStore.userInfo?.token">
-          <li><a href="javascript:;"><i class="iconfont icon-user"></i>{{userStore.userInfo?.nickname}}</a></li>
+          <li><a href="javascript:;"><i class="iconfont icon-user"></i>{{userStore.userInfo.nickname}}</a></li>
           <li>
             <el-popconfirm @confirm="confirm" title="确认退出吗?" confirm-button-text="确认" cancel-button-text="取消">
               <template #reference>

@@ -3,6 +3,7 @@ import axios from 'axios'
 import { ElMessage } from 'element-plus'
 import { useUserStore } from '@/stores/user'
 import 'element-plus/es/components/message/style/css'
+import router from '@/router'
 // 创建axios实例
 const httpInstance = axios.create({
   baseURL: 'http://pcapi-xiaotuxian-front-devtest.itheima.net',
@@ -30,15 +31,22 @@ httpInstance.interceptors.response.use(
   response => {
     return response
   },
-  error => {
-    return Promise.reject(error)
-  },
   //这得写error，否则会报错，因为error是axios的错误对象
-  res=>res.data.result,error=>{
+  error => {
+    // 错误提示（安全写法）
+    const msg = error.response.data.message || '请求失败'
+    const userStore = useUserStore()
     ElMessage({
-      type:'warning',
-      message: error.response.data.message
+      type: 'warning',
+      message: msg
     })
+    //401错误处理：清空用户数据并跳转登录页
+    if (error.response.status === 401) {
+      // 清空用户数据
+      userStore.clearUserInfo()
+      // 跳转登录页
+      router.push('/login')
+    }
     return Promise.reject(error)
   }
 

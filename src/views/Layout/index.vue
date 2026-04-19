@@ -4,6 +4,9 @@ import LayoutHeader from './components/LayoutHeader.vue'
 import LayoutFooter from './components/LayoutFooter.vue'
 import LayoutFixed from './components/LayoutFixed.vue'
 import { onMounted } from 'vue'
+import { useUserStore } from '@/stores/user'
+import router from '@/router'
+const userStore = useUserStore()
 //触发获取分类列表接口
 import { useCategoryStore } from '@/stores/category'
 const categoryStore = useCategoryStore()
