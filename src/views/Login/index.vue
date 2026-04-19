@@ -48,7 +48,7 @@ const submitForm = () => {
   const {account,password}=form.value
   formRef.value.validate(async (valid) => {
     if (valid) {
-      //TODO: lOGIN
+      //TODO: 登录
       await userStore.getUserInfo({account,password})
       // console.log(userStore.userInfo)
       //登录成功

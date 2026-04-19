@@ -2,7 +2,7 @@
 
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
-
+import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 import App from './App.vue'
 import router from './router'
 import '@/styles/common.scss'
@@ -12,9 +12,6 @@ import '@/styles/common.scss'
 import { lazyLoad } from './directives'
 //引入组件插件并注册
 import { compnentsPlugin } from '@/components'
-
-
-
 //// //测试接口 
 // import { getCategory } from '@/apis/testAPI'
 
@@ -22,23 +19,14 @@ import { compnentsPlugin } from '@/components'
 // getCategory().then(res => {
 //   console.log(res)
 // })
-
-
-
 const app = createApp(App)
 // 👇 控制 Vue开发者工具
 app.config.devtools = true; // true=开启，false=关闭
-
-app.use(createPinia())
+const pinia = createPinia()
+pinia.use(piniaPluginPersistedstate)
+app.use(pinia)
 app.use(router)
-
 app.mount('#app')
-
-
-
-
-
-
 ////定义全局指令
 app.use(lazyLoad)
 // app.directive('img-lazy', {
