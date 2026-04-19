@@ -6,8 +6,10 @@ import Components from 'unplugin-vue-components/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 // 导入对应包
 import ElementPlus from 'unplugin-element-plus/vite'
+import VueDevTools from 'vite-plugin-vue-devtools' // 必须有
 export default defineConfig({
   plugins: [
+    VueDevTools(), // 必须在 vue() 前面
     vue(),
     AutoImport({
       resolvers: [ElementPlusResolver()],

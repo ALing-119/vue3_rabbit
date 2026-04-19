@@ -26,6 +26,8 @@ import { compnentsPlugin } from '@/components'
 
 
 const app = createApp(App)
+// 👇 控制 Vue开发者工具
+app.config.devtools = true; // true=开启，false=关闭
 
 app.use(createPinia())
 app.use(router)

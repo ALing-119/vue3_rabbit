@@ -1,8 +1,14 @@
 <script setup>
 import { ref } from 'vue'
-import { loginAPI } from '@/apis/user'
+// import { loginAPI } from '@/apis/user'
 import { ElMessage } from 'element-plus'
 import { useRouter } from 'vue-router'
+import { useUserStore } from '@/stores/user'
+
+//1.获取userStore实例
+const userStore = useUserStore()
+
+
 
 //表单校验(用户名+密码)
 //1.准备表单对象 
@@ -43,8 +49,8 @@ const submitForm = () => {
   formRef.value.validate(async (valid) => {
     if (valid) {
       //TODO: lOGIN
-      const res = await loginAPI({account,password})
-      // console.log(res)
+      await userStore.getUserInfo({account,password})
+      // console.log(userStore.userInfo)
       //登录成功
       ElMessage.success('登录成功')
       //跳转首页

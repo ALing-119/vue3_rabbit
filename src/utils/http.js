@@ -18,6 +18,12 @@ httpInstance.interceptors.request.use(
 )
 // 响应拦截器
 httpInstance.interceptors.response.use(
+  response => {
+    return response
+  },
+  error => {
+    return Promise.reject(error)
+  },
   //这得写error，否则会报错，因为error是axios的错误对象
   res=>res.data.result,error=>{
     ElMessage({
@@ -25,13 +31,7 @@ httpInstance.interceptors.response.use(
       message: error.response.data.message
     })
     return Promise.reject(error)
-  },
-  response => {
-    return response
-  },
-  error => {
-    return Promise.reject(error)
-  },
+  }
 
 )
 export default httpInstance
