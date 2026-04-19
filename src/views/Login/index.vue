@@ -1,5 +1,8 @@
 <script setup>
 import { ref } from 'vue'
+import { loginAPI } from '@/apis/user'
+import { ElMessage } from 'element-plus'
+import { useRouter } from 'vue-router'
 
 //表单校验(用户名+密码)
 //1.准备表单对象 
@@ -33,11 +36,20 @@ const rules = ref({
 
 //3.获取表单实例
 const formRef = ref(null)
-
+const router = useRouter()
 //4.提交表单
 const submitForm = () => {
-  formRef.value.validate((valid) => {
-    formRef.value.submit()
+  const {account,password}=form.value
+  formRef.value.validate(async (valid) => {
+    if (valid) {
+      //TODO: lOGIN
+      const res = await loginAPI({account,password})
+      // console.log(res)
+      //登录成功
+      ElMessage.success('登录成功')
+      //跳转首页
+      router.replace('/')
+    }
   })
 }
 
