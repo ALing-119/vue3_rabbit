@@ -12,10 +12,15 @@ export const useUserStore = defineStore('user',()=>{
         userInfo.value = res.data.result
         return res.data.result
     }
+    //退出时清空用户数据
+    const clearUserInfo = () =>{
+        userInfo.value = null
+    }
     //3.导出userStore
     return {
         userInfo,
-        getUserInfo
+        getUserInfo,
+        clearUserInfo
     }
 },
     {
