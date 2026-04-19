@@ -5,7 +5,8 @@ import { ref } from 'vue'
 //1.准备表单对象 
 const form = ref({
   account: '',
-  password: ''
+  password: '',
+  agree: true
 })
 
 //2.准备校验规则
@@ -16,8 +17,20 @@ const rules = ref({
   password: [
     { required: true, message: '请输入密码', trigger: 'blur' },
     { min: 6, max: 12, message: '密码长度必须在6-12位之间', trigger: 'blur' }
+  ],
+  agree: [
+    {
+      validator: (rule, val, callback) => {
+        if (!val) {
+          callback(new Error('请先同意隐私条款和服务条款'))
+        } else {
+          callback()
+        }
+      }
+    }
   ]
 })
+
 
 </script>
 
@@ -51,8 +64,8 @@ const rules = ref({
               <el-form-item label="密码" prop="password">
                 <el-input v-model="form.password" />
               </el-form-item>
-              <el-form-item label-width="22px">
-                <el-checkbox  size="large">
+              <el-form-item label-width="22px" prop="agree">
+                <el-checkbox  size="large" v-model="form.agree">
                   我已同意隐私条款和服务条款
                 </el-checkbox>
               </el-form-item>
