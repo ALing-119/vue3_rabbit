@@ -36,3 +36,8 @@
   --el-color-danger: #e26237;
   --el-color-error: #cf4444;
 }
+// element/index.scss 只覆盖了 SCSS 变量，但 ElementPlus 2.x 的很多组件内部已经改用 CSS 变量，这些变量不会被 SCSS 变量覆盖所影响。
+// 例如：
+// - el-button 的 primary 主题色内部使用的是 --el-color-primary 这个 CSS 变量
+// - 一些其他组件可能还在使用 SCSS 变量 $colors
+// 这就是为什么 部分组件定制了主题色（绿色 #27ba9b），部分组件还是原蓝色 。

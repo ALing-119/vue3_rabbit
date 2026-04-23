@@ -1,7 +1,7 @@
 <script setup>
 import { useCartStore } from '@/stores/catestore'
 const cartList = useCartStore().cartList
-
+const store = useCartStore()
 </script>
 
 <template>
@@ -26,7 +26,7 @@ const cartList = useCartStore().cartList
               <p class="count">x{{ i.count }}</p>
             </div>
           </RouterLink>
-          <i class="iconfont icon-close-new" @click="store.delCart(i.skuId)"></i>
+          <i class="iconfont icon-close-new" @click="store.removeCart(i.skuId)"></i>
         </div>
        
       </div>
