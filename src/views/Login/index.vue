@@ -1,7 +1,6 @@
 <script setup>
 import { ref } from 'vue'
 // import { loginAPI } from '@/apis/user'
-import { ElMessage } from 'element-plus'
 import { useRouter } from 'vue-router'
 import { useUserStore } from '@/stores/user'
 

@@ -19,7 +19,7 @@ export default defineConfig({
     }),
     // 按需定制主题配置
     ElementPlus({
-      useSource: true,
+      useSource: false,
     }),
   ],
   resolve: {
